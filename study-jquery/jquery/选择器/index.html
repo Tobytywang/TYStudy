@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+    <style>
+        .descendants *
+        { 
+            width: 80%;
+            display: block;
+            border: 2px solid lightgrey;
+            color: lightgrey;
+            padding: 2px;
+            margin: 2px;
+        }
+    </style>
+    <script type="text/javascript">
+    $(document).ready(function(){
+    });
+    </script>
+</head>
+<body>
+    <div id="html1" class="html1"
+    style="position:fixed;left:0px;top:0px;
+    width:50%;height:100%;
+    margin:0px;padding:0px;border-right:1px solid #000000;">
+            <div class="descendants">div (当前元素) :class(descendants)
+                <a id="son1" class="son" lang="en-us">son1 (儿子元素)
+                    <h4>h4 (孙子元素)</h4>
+                    <span>span (孙子元素)</span>
+                    <b>b (孙子元素)
+                        <span> span (曾孙元素)</span>
+                    </b>
+                    <span id="flag">span (孙子元素); 锚点: flag;</span>
+                    <b>b (孙子元素)</b>
+                    <span>span (孙子元素)</span>
+                </a>
+                <a id="son2" class="son" lang="cn-zh">son2 (儿子元素)
+                    <span>span (孙子元素)</span>
+                    <b>b (孙子元素)
+                        <span id="galf"> span (曾孙元素); 锚点:galf;</span>
+                    </b>
+                    <h4>h4 (孙子元素)</h4>
+                    <span>span (孙子元素)</span>
+                </a>
+            </div>
+            <p class="show-content" id="show-content"></p>
+    </div><!-- 左侧的html页面 -->
+
+    <div id="html2"  class="html2"
+    style="position:absolute;right:0px;top:0px;
+    width:50%;height:100%;
+    margin:0px;padding:0px;border-left:1px solid #000000;">
+        <h1>选择器</h1>
+        <h2>1 基本</h2>
+        <button id="div_button1">隐藏</button>
+        <script>
+            $("#div_button1").click(function(){
+                $("#div1").css("display", "none");
+            });
+        </script>
+        <div id="div1">
+            <h3>1.1 *选择器</h3>
+                <button id="button1_1">Button</button>
+                <script>
+                    $("#button1_1").click(function(){
+                        var elementCount = $("#html1 *").children("span").length;
+                        $("#show-content").html("html1有"+elementCount+"个span标签");
+                    });
+                </script>
+            <h3>1.2 .class选择器</h3>
+                <p class="class">我的类属性是class<p>
+                <button id="button1_2">Button</button>
+                <script>
+                    $("#button1_2").click(function(){
+                        var elementCount = $("#html1 .son").length;
+                        $("#show-content").html("html1有"+elementCount+"个son类");
+                    });
+                </script>
+            <h3>1.3 element选择器</h3>
+                <button id="button1_3">Button</button>
+                <script>
+                    $("#button1_3").click(function(){
+                        var elementCount = $("#html1 span").length;
+                        $("#show-content").html("html1有"+elementCount+"个span标签");
+                    });
+                </script>
+            <h3>1.4 #id选择器</h3>
+                <button id="button1_4">Button</button>
+                <script>
+                    $("#button1_4").click(function(){
+                        var elementCount = $("#html1 #son1").length;
+                        $("#show-content").html("html1有"+elementCount+"个id为son1的标签");
+                    });
+                </script>
+            <h3>1.5 element的层级选择器</h3>
+        </div>
+
+
+        <h2>2 层级</h2>
+        <button id="div_button2">隐藏</button>
+        <script>
+            $("#div_button2").click(function(){
+                $("#div2").css("display", "none");
+            });
+        </script>
+        <div id="div2">
+            <h3>2.1 >选择器</h3>
+            <button id="button2_1">Button</button>
+            <script>
+                $("#button2_1").click(function(){
+                    var elementCount = $("#html1 b>span").length;
+                    $("#show-content").html("html1有"+elementCount+"个b>span的标签");
+                });
+            </script>
+            <h3>2.2 子孙选择器</h3>
+            <button id="button2_2">Button</button>
+            <script>
+                $("#button2_2").click(function(){
+                    var elementCount = $("#html1 #son1 span").length;
+                    $("#show-content").html("html1有"+elementCount+"个span标签");
+                });
+            </script>
+            <h3>2.3 临近兄弟选择器</h3>
+            <button id="button2_3">Button</button>
+            <script>
+                $("#button2_3").click(function(){
+                    var elementCount = $("#html1 span+b").length;
+                    $("#show-content").html("html1有"+elementCount+"个span+b标签");
+                });
+            </script>
+            <h3>2.4 兄弟选择器</h3>
+            <button id="button2_4">Button</button>
+            <script>
+                $("#button2_4").click(function(){
+                    var elementCount = $("#html1 b~span").length;
+                    $("#show-content").html("html1有"+elementCount+"个b~span标签");
+                });
+            </script>
+        </div>
+        <h2>3 基本筛选</h2>
+        <button id="div_button3">隐藏</button>
+        <script>
+            $("#div_button3").click(function(){
+                $("#div3").css("display", "none");
+            });
+        </script>
+        <div id="div3">
+            <h3>3.1 :animated</h3>
+            <p>选择正在执行动画效果的元素，就不演示了哦！</p>
+            <!-- <button id="button3_1">Button</button> -->
+            <script>
+                $("#button3_1").click(function(){
+                    var elementCount = $("#html1 b~span").length;
+                    $("#show-content").html("html1有"+elementCount+"个b~span标签");
+                });
+            </script>
+            <h3>3_2 :eq()、:gt()和:lt()</h3>
+            <button id="button3_2_1">eq()</button>
+            <button id="button3_2_2">gt()</button>
+            <button id="button3_2_3">lt()</button>
+            <script>
+                $("#button3_2_1").click(function(){
+                    var elementCount = $("#html1 b:eq(0)").css("border-color", "red");
+                    $("#show-content").html("将html1的第1个b标签变为红色");
+                });
+                $("#button3_2_2").click(function(){
+                    var elementCount = $("#html1 span:gt(-3)").css("border-color", "red");
+                    $("#show-content").html("将html1的最后两个span标签变为红色");
+                });
+                $("#button3_2_3").click(function(){
+                    var elementCount = $("#html1 span:lt(-3)").css("border-color", "red");
+                    $("#show-content").html("将html1除了后三个之外的span标签变为红色");
+                });
+            </script>
+            <h3>3_3 :even和:odd</h3>
+            <button id="button3_3_1">even</button>
+            <button id="button3_3_2">odd</button>
+            <script>
+                $("#button3_3_1").click(function(){
+                    var elementCount = $("#html1 span:even").css("border-color", "red");
+                    $("#show-content").html("将html1的偶数span标签变为红色");
+                });
+            </script>
+            <script>
+                $("#button3_3_2").click(function(){
+                    var elementCount = $("#html1 span:odd").css("border-color", "red");
+                    $("#show-content").html("将html1的奇数span标签变为红色");
+                });
+            </script>
+            <h3>3_4 :first和:last</h3>
+            <button id="button3_4_1">first</button>
+            <button id="button3_4_2">last</button>
+            <script>
+                $("#button3_4_1").click(function(){
+                    var elementCount = $("#html1 span:first").css("border-color", "red");
+                    $("#show-content").html("将html1的第一个span标签变为红色");
+                });
+            </script>
+            <script>
+                $("#button3_4_2").click(function(){
+                    var elementCount = $("#html1 span:last").css("border-color", "red");
+                    $("#show-content").html("将html1的最后一个span标签变为红色");
+                });
+            </script>
+            <h3>3_5 :first和:last</h3>
+            <button id="button3_5_1">first</button>
+            <button id="button3_5_2">last</button>
+            <script>
+                $("#button3_5_1").click(function(){
+                    var elementCount = $("#html1 span:first").css("border-color", "red");
+                    $("#show-content").html("将html1的第一个span标签变为红色");
+                });
+            </script>
+            <script>
+                $("#button3_5_2").click(function(){
+                    var elementCount = $("#html1 span:last").css("border-color", "red");
+                    $("#show-content").html("将html1的最后一个span标签变为红色");
+                });
+            </script>
+            <h3>3_6 :header</h3>
+            <button id="button3_6_1">Button</button>
+            <button id="button3_6_2">last</button>
+            <script>
+                $("#button3_6_1").click(function(){
+                    var elementCount = $("#html1 :header").css("border-color", "red");
+                    $("#show-content").html("将html1的所有标题标签变为红色");
+                });
+            </script>
+            <script>
+                $("#button3_6_2").click(function(){
+                    var elementCount = $("#html1 span:last").css("border-color", "red");
+                    $("#show-content").html("将html1的最后一个span标签变为红色");
+                });
+            </script>
+            <h3>3_7 :lang()</h3>
+            <button id="button3_7_1">Button</button>
+            <script>
+                $("#button3_7_1").click(function(){
+                    var elementCount = $("#html1 :lang(cn-zh)").css("border-color", "red");
+                    $("#show-content").html("将html1中lang属性为ch-zh的标签变为红色");
+                });
+            </script>
+            <h3>3_8 :not()</h3>
+            <button id="button3_8_1">Button</button>
+            <script>
+                $("#button3_8_1").click(function(){
+                    var elementCount = $("#html1 b:not(:first)").css("border-color", "red");
+                    $("#show-content").html("将html1中不为第一个的b标签");
+                });
+            </script>
+            <h3>3_9 :root()</h3>
+            <button id="button3_9_1">Button</button>
+            <script>
+                $("#button3_9_1").click(function(){
+                    var element = $(":root()").css("background-color", "lightblue");
+                    // $("#show-content").html(element[0]);
+                });
+            </script>
+            <h3>3_10 :target()</h3>
+            <p>选择之后记得刷新一下才可以！</p>
+            <a href="#flag">锚点1</a>
+            <a href="#galf">锚点2</a>
+            <script>
+                $("#button3_10_1").ready(function(){
+                    var element = $("#html1 span:target").css("border-color", "red");
+                });
+            </script>
+        </div>
+        <h2>4 内容筛选</h2>
+        <h2>5 可见性筛选</h2>
+        <h2>6 属性</h2>
+        <h2>7 子元素筛选</h2>
+        <h2>8 表单</h2>
+    </div>
+
+
+
+</body>
+</html>

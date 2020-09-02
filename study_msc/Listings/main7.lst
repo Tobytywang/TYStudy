@@ -1,0 +1,55 @@
+C51 COMPILER V9.60.0.0   MAIN7                                                             09/18/2019 01:47:47 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN7
+OBJECT MODULE PLACED IN .\Objects\main7.obj
+COMPILER INVOKED BY: C:\Program Files\Keil5\C51\BIN\C51.EXE main7.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\
+                    -Listings\main7.lst) TABS(2) OBJECT(.\Objects\main7.obj)
+
+line level    source
+
+   1          #include<reg52.h>
+   2          
+   3          sbit led1 = P1^0;
+   4          sbit led2 = P2^1;
+   5          sbit led3 = P1^2;
+   6          sbit led4 = P2^3;
+   7          sbit led5 = P1^4;
+   8          sbit led6 = P2^5;
+   9          sbit led7 = P1^6;
+  10          sbit led8 = P2^7;
+  11          
+  12          sbit k1 = P3^4;
+  13          sbit k2 = P3^5;
+  14          sbit k3 = P3^6;
+  15          sbit k4 = P3^7;
+  16          
+  17          void main()
+  18          {
+  19   1        P1 = 0xff;
+  20   1        while(1)
+  21   1        {
+  22   2          led1 = k1;
+  23   2          led2 = k1;
+  24   2          led3 = k2;
+  25   2          led4 = k2;
+  26   2          led5 = k3;
+  27   2          led6 = k3;
+  28   2          led7 = k4;
+  29   2          led8 = k4;
+  30   2        }
+  31   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     37    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

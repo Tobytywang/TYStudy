@@ -1,0 +1,87 @@
+C51 COMPILER V9.60.0.0   MAIN2                                                             09/15/2019 01:30:56 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN2
+OBJECT MODULE PLACED IN .\Objects\main2.obj
+COMPILER INVOKED BY: C:\Program Files\Keil5\C51\BIN\C51.EXE main2.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\
+                    -Listings\main2.lst) TABS(2) OBJECT(.\Objects\main2.obj)
+
+line level    source
+
+   1          #include<reg52.h>
+   2          
+   3          #define uint unsigned int
+   4          #define on 0
+   5          #define off 1
+   6          
+   7          sbit led1 = P1^0;
+   8          sbit led2 = P1^1;
+   9          sbit led3 = P1^2;
+  10          sbit led4 = P1^3;
+  11          sbit led5 = P1^4;
+  12          sbit led6 = P1^5;
+  13          sbit led7 = P1^6;
+  14          sbit led8 = P1^7;
+  15          
+  16          void delay(uint xms)
+  17          {
+  18   1        uint i,j;
+  19   1        for(i=xms; i>0; i--)
+  20   1        {
+  21   2          for(j=112; j>0; j--);
+  22   2        }
+  23   1      }
+  24          
+  25          void main()
+  26          {
+  27   1        while(1)
+  28   1        {
+  29   2          led1 = on;
+  30   2          delay(200);
+  31   2          led1 = off;
+  32   2          
+  33   2          led2 = on;
+  34   2          delay(200);
+  35   2          led2 = off;
+  36   2          
+  37   2          led3 = on;
+  38   2          delay(200);
+  39   2          led3 = off;
+  40   2          
+  41   2          led4 = on;
+  42   2          delay(200);
+  43   2          led4 = off;
+  44   2          
+  45   2          led5 = on;
+  46   2          delay(200);
+  47   2          led5 = off;
+  48   2          
+  49   2          led6 = on;
+  50   2          delay(200);
+  51   2          led6 = off;
+  52   2          
+  53   2          led7 = on;
+  54   2          delay(200);
+C51 COMPILER V9.60.0.0   MAIN2                                                             09/15/2019 01:30:56 PAGE 2   
+
+  55   2          led7 = off;
+  56   2          
+  57   2          led8 = on;
+  58   2          delay(200);
+  59   2          led8 = off;
+  60   2        }
+  61   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     92    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
